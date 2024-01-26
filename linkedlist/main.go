@@ -1,28 +1,45 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+func runTest(n uint) {
+
+}
 
 func main() {
 
 	ll := NewLinkedList[int]()
 
+	fmt.Println(ll.Remove(0))
+	fmt.Println(ll.Remove(1000))
+
 	ll.Add(1)
+	fmt.Println(ll.Remove(0))
+
 	ll.Add(2)
 	ll.Add(3)
+	fmt.Println(ll.Remove(1))
 
 	//fmt.Println(ll.Get(-1))
 	fmt.Println(ll.Get(0))
-	fmt.Println(ll.Get(1))
-	fmt.Println(ll.Get(2))
-	fmt.Println(ll.Get(3))
 
-	for i := 4; i < 10; i++ {
+	for i := 4; i < 100000; i++ {
 		ll.Add(i)
+
+		if i%5 == 0 {
+			fmt.Println(ll.Remove(uint(i) - 1))
+		}
 	}
 
+	start := time.Now()
 	for val := range ll.ChanIter(false) {
-		fmt.Println(val)
+		v := val
+		v = v + v
 	}
+	fmt.Println("iterating", ll.Len(), "items took:", time.Since(start))
 
 	//for i := range ll {
 	//

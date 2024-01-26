@@ -53,6 +53,8 @@ func (ll *LinkedList[T]) Remove(idx uint) bool {
 		return false
 	}
 
+	ll.length--
+
 	if idx == 0 {
 		ll.head = ll.head.Next
 		return true
