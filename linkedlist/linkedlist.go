@@ -36,7 +36,7 @@ func (ll *LinkedList[T]) Add(item T) {
 
 func (ll *LinkedList[T]) Get(idx uint) (T, bool) {
 	var nilItem T
-	if idx < 0 || idx >= ll.length {
+	if idx >= ll.length {
 		return nilItem, false
 	}
 
@@ -49,7 +49,7 @@ func (ll *LinkedList[T]) Get(idx uint) (T, bool) {
 }
 
 func (ll *LinkedList[T]) Remove(idx uint) bool {
-	if idx < 0 || idx >= ll.length {
+	if idx >= ll.length {
 		return false
 	}
 
