@@ -10,6 +10,10 @@ type LinkedList[T any] struct {
 	length uint
 }
 
+func (ll *LinkedList[T]) Len() uint {
+	return ll.length
+}
+
 func (ll *LinkedList[T]) Add(item T) {
 	newNode := &LinkedListNode[T]{
 		Next: nil,
@@ -42,6 +46,27 @@ func (ll *LinkedList[T]) Get(idx uint) (T, bool) {
 	}
 
 	return iterNode.Data, true
+}
+
+func (ll *LinkedList[T]) Remove(idx uint) bool {
+	if idx < 0 || idx > ll.length-1 {
+		return false
+	}
+
+	if idx == 0 {
+		ll.head = ll.head.Next
+		return true
+	}
+
+	prev := ll.head
+	iterNode := ll.head.Next
+	for nodeI := uint(1); nodeI < idx; nodeI++ {
+		prev = iterNode
+		iterNode = iterNode.Next
+	}
+
+	prev.Next = iterNode.Next
+	return true
 }
 
 func (ll *LinkedList[T]) ChanIter(buffered bool) <-chan T {
