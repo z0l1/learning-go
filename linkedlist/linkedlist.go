@@ -44,6 +44,28 @@ func (ll *LinkedList[T]) Get(idx uint) (T, bool) {
 	return iterNode.Data, true
 }
 
+func (ll *LinkedList[T]) ChanIter(buffered bool) <-chan T {
+	var ch chan T
+
+	if buffered {
+		ch = make(chan T, ll.length)
+	} else {
+		ch = make(chan T)
+	}
+
+	go func() {
+		iterNode := ll.head
+		for iterNode != nil {
+			ch <- iterNode.Data
+			iterNode = iterNode.Next
+		}
+
+		close(ch)
+	}()
+
+	return ch
+}
+
 func NewLinkedList[T any]() LinkedList[T] {
 	return LinkedList[T]{
 		head:   nil,

@@ -9,5 +9,5 @@ A good friend of mine likes this topic so I guess I'll start with this
 - [ ] Remove at idx
 
 ---
-- [ ] channel to work with `range`
+- [x] channel to work with `range`
 - [ ] some sort of elegant iterator
