@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+// renamed it to 'linkedlist_test.go' but it was just my console line testing
+
 func RunTest() {
 
 	ll := New[int]()
