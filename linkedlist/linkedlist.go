@@ -1,12 +1,12 @@
-package main
+package linkedlist
 
-type LinkedListNode[T any] struct {
-	Next *LinkedListNode[T]
+type Node[T any] struct {
+	Next *Node[T]
 	Data T
 }
 
 type LinkedList[T any] struct {
-	head   *LinkedListNode[T]
+	head   *Node[T]
 	length uint
 }
 
@@ -15,7 +15,7 @@ func (ll *LinkedList[T]) Len() uint {
 }
 
 func (ll *LinkedList[T]) Add(item T) {
-	newNode := &LinkedListNode[T]{
+	newNode := &Node[T]{
 		Next: nil,
 		Data: item,
 	}
@@ -93,7 +93,7 @@ func (ll *LinkedList[T]) ChanIter(buffered bool) <-chan T {
 	return ch
 }
 
-func NewLinkedList[T any]() LinkedList[T] {
+func New[T any]() LinkedList[T] {
 	return LinkedList[T]{
 		head:   nil,
 		length: 0,

@@ -1,17 +1,13 @@
-package main
+package linkedlist
 
 import (
 	"fmt"
 	"time"
 )
 
-func runTest(n uint) {
+func RunTest() {
 
-}
-
-func main() {
-
-	ll := NewLinkedList[int]()
+	ll := New[int]()
 
 	fmt.Println(ll.Remove(0))
 	fmt.Println(ll.Remove(1000))
@@ -44,5 +40,4 @@ func main() {
 	//for i := range ll {
 	//
 	//}
-
 }

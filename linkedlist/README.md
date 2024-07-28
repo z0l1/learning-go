@@ -6,7 +6,7 @@ A good friend of mine likes this topic so I guess I'll start with this
 - [x] generic
 - [x] Add item
 - [x] Get by idx
-- [ ] Remove at idx
+- [x] Remove at idx
 
 ---
 - [x] channel to work with `range`
